@@ -7,15 +7,15 @@
 </head>
 <body>
     What chat room would you like to enter?<br>
-   <select>
+   <ul>
 
     {% for sala in salas_p %}
 
-    <option>{{ sala.nombre }}</option>
+    <li><a href="{{sala.id}}">{{ sala.nombre }}</a></li>
 
     {% endfor %}
 
-   </select>
+   </ul<
 
 
     <input id="room-name-submit" type="button" value="Enter">
