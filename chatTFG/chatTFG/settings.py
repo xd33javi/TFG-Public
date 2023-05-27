@@ -56,7 +56,7 @@ ROOT_URLCONF = 'chatTFG.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'chatTFG/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

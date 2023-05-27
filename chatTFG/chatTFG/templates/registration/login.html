@@ -1,0 +1,16 @@
+{% if form.errors %}
+<p>El nombre de usuario y la contraseña no coinciden</p>
+{% endif %}
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <input type="text" name="username" id="" placeholder="Nombre de Usuario"/>
+        <br/>
+        <input type="password" name="password" id="" placeholder="Contraseña"/>
+
+        <br>
+
+        <input type="submit" value="Iniciar Sesion">
+     
+    </form>
