@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.decorators import login_required
+from .models import Mensajes,Salas
 # Create your views here.
 
 from .models import Salas
@@ -14,4 +15,6 @@ def home(request):
 
 @login_required(login_url='/accounts/login/?next=/chat/')
 def room(request, room_name):
-    return render(request, "chatapp/room.html", {"room_name": room_name})
+    sala_obj=Salas.objects.get(id=room_name)
+    mensajes= Mensajes.objects.filter(sala=sala_obj)
+    return render(request, "chatapp/room.html", {"room_name": room_name,'old_msg':mensajes})
