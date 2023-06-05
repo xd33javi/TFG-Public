@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Salas(models.Model):
     nombre=models.CharField(max_length=50)
+    imagen=models.ImageField(upload_to='imgsalas',null=True,blank=True)
     
     class Meta:
         verbose_name="Sala"

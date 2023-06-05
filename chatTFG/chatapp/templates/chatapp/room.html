@@ -1,10 +1,5 @@
-{% extends 'chatapp/base.html'%}
-
 {% load static %}
-
-{% block content %}
-
-    <div id="chat-log" class="box">
+    <div id="chat-log" class="box" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()">
         {% for msg in old_msg %}
         <p>{{msg.user.username}}: {{msg.mensaje}}</p>
         {% endfor %}
@@ -16,5 +11,3 @@
 
     <script src="{% static 'chatapp/javascript/chatapp.js' %}"></script>
     
-
-{% endblock %}

@@ -6,15 +6,25 @@ from .models import Mensajes,Salas
 from .models import Salas
 
 @login_required(login_url='/accounts/login/?next=/chat/')
-def home(request):
+def home(request,room_name=""):
     
-    salas_v = Salas.objects.all()
+    if room_name=="":
+    
+        salas_v = Salas.objects.all()
+            
+        return render(request,'chatapp/home.html',{'salas_p':salas_v})
+    else:
+        salas_v = Salas.objects.all()
+        sala_obj=Salas.objects.get(id=room_name)
+        mensajes= Mensajes.objects.filter(sala=sala_obj)
+          
+        return render(request,'chatapp/home.html',{'salas_p':salas_v,"room_name": room_name,'old_msg':mensajes})
         
-    return render(request,'chatapp/home.html',{'salas_p':salas_v})
 
-
+"""
 @login_required(login_url='/accounts/login/?next=/chat/')
 def room(request, room_name):
     sala_obj=Salas.objects.get(id=room_name)
     mensajes= Mensajes.objects.filter(sala=sala_obj)
     return render(request, "chatapp/room.html", {"room_name": room_name,'old_msg':mensajes})
+"""
