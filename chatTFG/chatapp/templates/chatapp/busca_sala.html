@@ -1,0 +1,25 @@
+<h2>Todas la salas</h2>
+<form action="/chat/añadir/" method="POST">{% csrf_token %}
+    <input type="text" name="nombre"/>
+    <input type="submit" value="Buscar"/>
+</form>
+<a class="btn btn-success" href="/chat/nuevasala">Crear Sala</a>
+<div class='row'>
+    {% for sala in salas %} 
+        <div class='col-md-3'>
+            <div class='card'>
+                <a class="btn btn-success" href="/chat/gs/{{sala.id}}">Guardar Sala</a>
+                <a href='/chat/{{sala.id}}/'>
+                    <div class='card-body'>
+                        {% if sala.imagen %}
+                            <img class="card-img-top" src="{{ sala.imagen.url }}"style="padding: 5px;width: 250px"/>
+                        {% else %}
+                            <img class="card-img-top" src="/media/imgsalas/default.webp"style="padding: 5px;width: 250px"/>
+                        {% endif %}
+                        <h7 class='card-title'>{{sala.nombre}}</h7>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>

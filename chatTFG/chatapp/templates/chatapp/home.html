@@ -2,18 +2,18 @@
 
 {% block content %}
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 15%;float:left">
-        <button><a href="/accounts/logout/?next=/chat/">Cerrar Sesion</a></button>
+        <button><a href="/accounts/logout/?next=/">Cerrar Sesion</a></button>
 
         <div class="list-group list-group-flush border-bottom scrollarea">
 
-            {% for sala in salas_p %}
+            {% for sala_c in salas_c %}
 
-                <a href="/chat/{{sala.id}}" class="list-group-item hover-effect">
+                <a href="/chat/{{sala_c.sala.id}}" class="list-group-item hover-effect">
                 <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">{{sala.nombre}}</strong>
+                    <strong class="mb-1">{{sala_c.sala.nombre}}</strong>
                     <small>
-                        {% if sala.imagen %}
-                            <img class="card-img-top" src="{{ sala.imagen.url }}"style="padding: 5px;width: 50px"/>
+                        {% if sala_c.sala.imagen %}
+                            <img class="card-img-top" src="{{ sala_c.sala.imagen.url }}"style="padding: 5px;width: 50px"/>
                         {% else %}
                             <img class="card-img-top" src="/media/imgsalas/default.webp"style="padding: 5px;width: 50px"/>
                         {% endif %}
@@ -22,13 +22,30 @@
                 </a>
             {% endfor %}
 
+            <a href="/chat/añadir" class="list-group-item hover-effect">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Añadir Sala</strong>
+                    <small>
+                            <img class="card-img-top" src="/media/imgsalas/mas.webp"style="padding: 5px;width: 50px"/>
+                    </small>
+                </div>
+                </a>
+
         </div>
     </div>
     <div style="float:left;width:85%">
         {% if room_name %}
+            <a class="btn btn-warning" href="/chat/rms/{{room_name}}">Quitar de la Lista</a>
+            {% if request.user == salaUser%}
+                <a class="btn btn-danger" href="/chat/removes/{{room_name}}">Eliminar Sala</a>
+            {% endif %}
             {% include 'chatapp/room.html' with room_name=room_name old_msg=old_msg %}
         {% else %}
-            <p>Selecciona una sala para enpezar a chatear</p>
+            {% if salas %}
+                {% include 'chatapp/busca_sala.html' with salas=salas %}
+            {% else %}
+                <p>Selecciona una sala para enpezar a chatear</p>
+            {% endif %}
         {% endif %}
     </div>
 

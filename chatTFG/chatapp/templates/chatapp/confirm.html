@@ -1,0 +1,20 @@
+{% extends 'chatapp/base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Seguro que quieres borrar la sala {{nombre_sala}}?</h1>
+
+<form action="" method="POST" >{% csrf_token %}
+
+    <table>
+        <tr>
+            <td><a class="btn" href="/chat">No</a></td>
+            <td><input type="submit" value="Si" class="btn btn-danger"/></td>
+        </tr>
+    </table>
+
+</form>
+
+{% endblock %}

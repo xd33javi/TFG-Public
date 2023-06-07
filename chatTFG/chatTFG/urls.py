@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from chatapp.views import welcome,register
 
 urlpatterns = [
+    path('', welcome),
+    path('accounts/register/',register),
     path('admin/', admin.site.urls),
     path('chat/',include('chatapp.urls')),
     path('accounts/',include('django.contrib.auth.urls')),

@@ -1,0 +1,39 @@
+<html>
+
+<head>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'chatapp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Mi css -->
+    <link href="{% static 'chatapp/css/chatapp.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    
+</head>
+
+<body 
+style="background-image: url('/media/imgsalas/catbird.png');
+background-repeat: no-repeat; 
+background-size: 100% 100%;">
+
+<div style="text-align: center; margin-top: 50px;">
+    <h1>Bienvenidos a nuestro chat</h1>
+    <a class="btn btn-success" href="/accounts/login/?next=/chat/">Iniciar Sesion</a>
+    <a class="btn btn-success" href="/accounts/register/">Registrarse</a>
+</div>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'chatapp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'chatapp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+
+
+</html>
