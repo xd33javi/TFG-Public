@@ -11,6 +11,7 @@ setInterval(function scrollDiv() {
 },200);
 
 const roomName = JSON.parse(document.getElementById('room-name').textContent);
+const roomUser = JSON.parse(document.getElementById('room-user').textContent);
 
 const chatSocket = new WebSocket(
     'ws://'
@@ -22,7 +23,27 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-    document.getElementById('chat-log').innerHTML += ('<p>'+data.nameUser + ': ' + data.message + '<p/>');
+
+    msgpropio="<div class='card text-white border border-dark' style='width: 15%;margin-left: auto;margin-top: 10px;margin-bottom:10px;'>"+
+    "<div class='card-header border border-dark fuentenegrita' style='background-color: rgb(208, 0, 210);text-align:right;'>"+
+    data.nameUser+"</div><div class='card-body gradient fuente'>"+
+    "<p style='text-align:right;'>"+data.message+"<p></div></div>"
+
+
+    otromsg="<div class='card text-white border border-dark' style='width: 15%;margin-top: 10px;margin-bottom:10px;'>"+
+    "<div class='card-header border border-dark fuentenegrita' style='background-color: rgb(0, 0, 0)'>"+
+    data.nameUser+"</div><div class='card-body gradient2 fuente'>"+
+    "<p style='text-align:left;'>"+data.message+"<p></div></div>"
+
+    if(data.message){
+        if (data.nameUser == roomUser){
+            document.getElementById('chat-log').innerHTML += msgpropio;
+        }
+        else{
+            document.getElementById('chat-log').innerHTML += otromsg;
+        }
+        scrollDiv();
+    }
 };
 
 chatSocket.onclose = function(e) {

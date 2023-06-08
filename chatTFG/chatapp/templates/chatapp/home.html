@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-transparent" style="width: 15%;float:left">
-        <button><a href="/accounts/logout/?next=/">Cerrar Sesion</a></button>
+        <button class="btn btn-outline-dark"><a href="/accounts/logout/?next=/">Cerrar Sesion</a></button>
 
         <div class="list-group list-group-flush border-bottom scrollarea bg-transparent">
 
@@ -35,9 +35,9 @@
     </div>
     <div style="float:left;width:85%">
         {% if room_name %}
-            <a class="btn btn-warning" href="/chat/rms/{{room_name}}">Quitar de la Lista</a>
+            <a class="btn btn-outline-warning" href="/chat/rms/{{room_name}}">Quitar de la Lista</a>
             {% if request.user == salaUser%}
-                <a class="btn btn-danger" href="/chat/removes/{{room_name}}">Eliminar Sala</a>
+                <a class="btn btn-outline-danger" href="/chat/removes/{{room_name}}">Eliminar Sala</a>
             {% endif %}
             {% include 'chatapp/room.html' with room_name=room_name old_msg=old_msg %}
         {% else %}
