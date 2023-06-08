@@ -8,7 +8,7 @@
 
             {% for sala_c in salas_c %}
 
-                <a href="/chat/{{sala_c.sala.id}}" class="list-group-item hover-effect">
+                <a href="/chat/{{sala_c.sala.id}}" class="list-group-item hover-effect rounded">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">{{sala_c.sala.nombre}}</strong>
                     <small>
@@ -22,7 +22,7 @@
                 </a>
             {% endfor %}
 
-            <a href="/chat/añadir" class="list-group-item hover-effect">
+            <a href="/chat/añadir" class="list-group-item hover-effect rounded">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Añadir Sala</strong>
                     <small>
