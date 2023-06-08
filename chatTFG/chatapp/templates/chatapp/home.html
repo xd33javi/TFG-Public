@@ -1,14 +1,14 @@
 {% extends 'chatapp/base.html'%}
 
 {% block content %}
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 15%;float:left">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-transparent" style="width: 15%;float:left">
         <button><a href="/accounts/logout/?next=/">Cerrar Sesion</a></button>
 
-        <div class="list-group list-group-flush border-bottom scrollarea">
+        <div class="list-group list-group-flush border-bottom scrollarea bg-transparent">
 
             {% for sala_c in salas_c %}
 
-                <a href="/chat/{{sala_c.sala.id}}" class="list-group-item hover-effect rounded">
+                <a href="/chat/{{sala_c.sala.id}}" class="list-group-item hover-effect rounded bg-transparent border border-dark">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">{{sala_c.sala.nombre}}</strong>
                     <small>
@@ -22,7 +22,7 @@
                 </a>
             {% endfor %}
 
-            <a href="/chat/añadir" class="list-group-item hover-effect rounded">
+            <a href="/chat/añadir" class="list-group-item hover-effect rounded bg-transparent border border-dark">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Añadir Sala</strong>
                     <small>

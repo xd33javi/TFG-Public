@@ -1,11 +1,27 @@
 {% load static %}
     <div id="chat-log" class="box" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()">
-        {% for msg in old_msg %}
-        <p>{{msg.user.username}}: {{msg.mensaje}}</p>
-        {% endfor %}
-    </div><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+       {% for msg in old_msg %}           
+        {% if msg.user|stringformat:'s' == user.username|stringformat:'s' %}
+        <div class='card text-white' style='width: 15%;margin-left: auto;margin-top: 10px;'>
+            <div class="card-header border border-dark" style="background-color: rgba(255,13,185,1)">{{msg.user}}</div>
+            <div class='card-body gradient'>
+                <p style='text-align: right;'>{{msg.mensaje}}</p>
+        {% else %}
+        <div class='card text-white' style='width: 15%;margin-top: 10px;'>
+            <div class='card-header border border-dark' style="background-color: rgba(255,13,185,1)">{{msg.user}}</div>
+            <div class='card-body gradient'>
+                <p style='text-align: left;'>{{msg.mensaje}}</p>
+        {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="input-group mb-3">
+        <input id="chat-message-input" class="form-control" type="text">
+        <div class="input-group-append">
+          <input id="chat-message-submit" type="button" value="Send" class="btn btn-outline-primary"/>
+        </div>
+    </div>
 
     {{ room_name|json_script:"room-name" }}
 
