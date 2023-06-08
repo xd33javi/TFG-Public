@@ -16,3 +16,7 @@
   background: linear-gradient(0deg, rgba(17,93,255,1) 0%, rgba(255,13,185,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#115dff",endColorstr="#ff0db9",GradientType=1);
 }
+
+.fuente{
+  font-family: Arial;
+}
