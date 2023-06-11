@@ -42,7 +42,6 @@ chatSocket.onmessage = function(e) {
         else{
             document.getElementById('chat-log').innerHTML += otromsg;
         }
-        scrollDiv();
     }
 };
 
