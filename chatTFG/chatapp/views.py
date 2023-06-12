@@ -48,13 +48,13 @@ def home(request,room_name=""):
             if request.method == 'POST':
                 salas_c = request.user.salas_c.all()
                 nombre= request.POST.get('nombre','')
-                salas = Salas.objects.filter(nombre__contains=nombre)[:5]
+                salas = Salas.objects.filter(nombre__contains=nombre)[:8]
                 
                 return render(request,'chatapp/home.html',{'salas_c':salas_c,'salas':salas})   
             else:
                 
                 salas_c = request.user.salas_c.all()
-                salas = Salas.objects.all()[:5]
+                salas = Salas.objects.all()[:8]
                 
                 return render(request,'chatapp/home.html',{'salas_c':salas_c,'salas':salas})
         else:

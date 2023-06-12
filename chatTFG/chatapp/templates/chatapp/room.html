@@ -2,14 +2,14 @@
     <div id="chat-log" class="box" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()">
        {% for msg in old_msg %}           
         {% if msg.user|stringformat:'s' == user.username|stringformat:'s' %}
-        <div class='card text-white' style='width: 15%;margin-left: auto;margin-top: 10px;'>
-            <div class="card-header border border-dark" style="background-color: rgb(208, 0, 210)">{{msg.user}}</div>
+        <div class='card text-white border border-dark' style='width: 15% ;margin-left: auto;margin-top: 10px; margin-bottom:10px;'>
+            <div class="card-header border border-dark fuentenegrita" style="background-color: rgb(208, 0, 210);text-align:right;">{{msg.user}}</div>
             <div class='card-body gradient fuente'>
                 <p style='text-align: right;'>{{msg.mensaje}}</p>
         {% else %}
-        <div class='card text-white' style='width: 15%;margin-top: 10px;'>
-            <div class='card-header border border-dark' style="background-color: rgb(0, 0, 0)">{{msg.user}}</div>
-            <div class='card-body gradient2'>
+        <div class='card text-white border border-dark' style='width: 15%; margin-top: 10px; margin-bottom:10px;'>
+            <div class='card-header border border-dark fuentenegrita' style="background-color: rgb(0, 0, 0)">{{msg.user}}</div>
+            <div class='card-body gradient2 fuente'>
                 <p style='text-align: left;'>{{msg.mensaje}}</p>
         {% endif %}
             </div>
@@ -24,6 +24,7 @@
     </div>
 
     {{ room_name|json_script:"room-name" }}
+    {{ user.username|json_script:"room-user" }}
 
     <script src="{% static 'chatapp/javascript/chatapp.js' %}"></script>
     

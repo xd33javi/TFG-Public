@@ -1,14 +1,19 @@
-<h2>Todas la salas</h2>
-<form action="/chat/añadir/" method="POST">{% csrf_token %}
-    <input type="text" name="nombre"/>
-    <input type="submit" value="Buscar"/>
-</form>
-<a class="btn btn-success" href="/chat/nuevasala">Crear Sala</a>
-<div class='row'>
+<h1 style="text-align: center; margin-top: 30px; font-family: calibri" class="display-3">Salas Disponibles</h1>
+
+<div style="margin-top:100px; margin-bottom: 10px;">
+    <form action="/chat/añadir/" method="POST" style="display: inline;">
+        {% csrf_token %}
+        <input type="text" name="nombre"/>
+        <input type="submit" value="Buscar"/>
+    </form>
+    <a class="btn btn-success" href="/chat/nuevasala" style="display: inline; margin-left: 10px">Crear Sala</a>
+</div>
+
+<div class='row' >
     {% for sala in salas %} 
         <div class='col-md-3'>
-            <div class='card'>
-                <a class="btn btn-success" href="/chat/gs/{{sala.id}}">Guardar Sala</a>
+            <div class='card border border-dark' style=" background-color:black;">
+                <a class="btn btn-outline-success" href="/chat/gs/{{sala.id}}">Guardar Sala</a>
                 <a href='/chat/{{sala.id}}/'>
                     <div class='card-body'>
                         {% if sala.imagen %}
